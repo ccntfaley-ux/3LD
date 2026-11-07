@@ -5,4 +5,32 @@
 (setq xaxis (make-array '(20 20) :initial-element 0))
 (setq yaxis (make-array '(20 20) :initial-element 0))
 (setq zaxis (make-array '(20 20) :initial-element 0))
-(write-line "placeholder text for debug")
+(setq corner 0)
+(defvar currentshape 0)
+; simple shapes
+
+(defun cube (shapename)
+	(dotimes (i 4)
+		(if (<= i 1)
+
+			(setf (aref xaxis 0   (* i 19) ) 1)
+			(setf  (aref xaxis 19 (- (* i 19) 38)) 1)))
+	(dotimes (i 4)
+		(if (<= i 1)
+
+			(setf (aref yaxis 0   (* i 19) ) 1)
+			(setf  (aref yaxis 19 (- (* i 19) 38)) 1)))
+	(dotimes (i 4)
+		(if (<= i 1)
+
+			(setf (aref zaxis 0   (* i 19) ) 1)
+			(setf  (aref zaxis 19 (- (* i 19) 38)) 1)))
+	(setq corner 1))
+
+
+
+
+(cube "bai")
+(setq xaxis (write-to-string xaxis))
+(write-line xaxis)
+
