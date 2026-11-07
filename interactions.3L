@@ -1,0 +1,4 @@
+#!/usr/local/bin/sbcl --script 
+; use this for optional interactions including player, should be modular enough for other people to completely change
+; if making a game or modeling program this will be the file run if not omeones unique file
+(load "/home/user/Downloads/3-lisp.cl")
