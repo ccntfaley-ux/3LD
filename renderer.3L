@@ -1,0 +1,4 @@
+#!/usr/local/bin/sbcl --script 
+; use this for rendering objects, mainly placeholder currently, current theory is, objects in objects.3L will be
+; taken, given location from a future locator.3L and rendered togethor or rendered individually
+(load "/home/user/Downloads/3-lisp.cl")
