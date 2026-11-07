@@ -1,0 +1,6 @@
+#!/usr/local/bin/sbcl --script 
+; use this for making objects, mainly placeholder currently
+(load "/home/user/Downloads/3-lisp.cl")
+(setq iamnotset (make-array '(20 20) :initial-element 0))
+(setq iamnotset (write-to-string iamnotset))
+(write-line iamnotset)
