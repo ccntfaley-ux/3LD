@@ -1,0 +1,3 @@
+#!/usr/local/bin/sbcl --script 
+; function defined in renderer.3L, will take from objects.3L and choose to decide how many there are, and where they are
+(load "/home/user/Downloads/3-lisp.cl")
