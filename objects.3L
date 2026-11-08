@@ -12,22 +12,18 @@
 (setq thick4 0)
 (defvar currentshape 0)
 ; simple shapes
-
 (defun cubewhole (shapename)
 	(defparameter usedvar (list "aaxis" "corner" "end" shapename))
 	(dotimes (i 4)
 		(if (<= i 1)
-
 			(setf (aref xaxis 0   (* i 19) ) 15)
 			(setf  (aref xaxis 19 (- (* i 19) 38)) 15)))
 	(dotimes (i 4)
 		(if (<= i 1)
-
 			(setf (aref yaxis 0   (* i 19) ) 15)
 			(setf  (aref yaxis 19 (- (* i 19) 38)) 15)))
 	(dotimes (i 4)
 		(if (<= i 1)
-
 			(setf (aref zaxis 0   (* i 19) ) 1)
 			(setf  (aref zaxis 19 (- (* i 19) 38)) 15)))
 	(setq corner 1))
@@ -35,12 +31,10 @@
 	(defparameter *words* (list "xaxis" "xextreme" "thickness" "end" shapename))
 	(dotimes (i 4)
 		(if (<= i 1)
-
 			(setf (aref xaxis 9   (* i 19) ) 14)
 			(setf  (aref xaxis (- (* i 19) 38) 9) 14)))
 	(dotimes (i 4)
 		(if (<= i 1)
-
 			(setf (aref xextreme 9   (* i 19) ) 14)
 			(setf  (aref xextreme (- (* i 19) 38) 9) 14)))
 	(setq thick4 2))
@@ -56,6 +50,3 @@
 	(matrix-set-all zextreme)
 	(setq corner 0)
 	(setq thick4 0))
-
-
-
