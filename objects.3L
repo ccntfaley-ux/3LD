@@ -43,9 +43,19 @@
 
 			(setf (aref xextreme 9   (* i 19) ) 14)
 			(setf  (aref xextreme (- (* i 19) 38) 9) 14)))
-	(setq thickness 2))
-	
-
+	(setq thick4 2))
+(defun matrix-set-all (matrix)
+  (dotimes (i (array-total-size matrix) matrix)
+    (setf (row-major-aref matrix i) 0)))
+(defun utilized 
+	(matrix-set-all xaxis)
+	(matrix-set-all yaxis)
+	(matrix-set-all zaxis)
+	(matrix-set-all xextreme)
+	(matrix-set-all yextreme)
+	(matrix-set-all zextreme)
+	(setq corner 0)
+	(setq thick4 0))
 
 
 
