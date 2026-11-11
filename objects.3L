@@ -8,22 +8,30 @@
 (setq xextreme (make-array '(20 20) :initial-element 0))
 (setq yextreme (make-array '(20 20) :initial-element 0))
 (setq zextreme (make-array '(20 20) :initial-element 0))
+(setq xsetter (make-array '(20 20) :initial-element 0))
+(setq ysetter (make-array '(20 20) :initial-element 0))
+(setq zsetter (make-array '(20 20) :initial-element 0))
+
 (setq corner 0)
 (setq thick4 0)
 (defvar currentshape 0)
 ; simple shapes
+
 (defun cubewhole (shapename)
 	(defparameter usedvar (list "aaxis" "corner" "end" shapename))
 	(dotimes (i 4)
 		(if (<= i 1)
+
 			(setf (aref xaxis 0   (* i 19) ) 15)
 			(setf  (aref xaxis 19 (- (* i 19) 38)) 15)))
 	(dotimes (i 4)
 		(if (<= i 1)
+
 			(setf (aref yaxis 0   (* i 19) ) 15)
 			(setf  (aref yaxis 19 (- (* i 19) 38)) 15)))
 	(dotimes (i 4)
 		(if (<= i 1)
+
 			(setf (aref zaxis 0   (* i 19) ) 1)
 			(setf  (aref zaxis 19 (- (* i 19) 38)) 15)))
 	(setq corner 1))
@@ -31,17 +39,33 @@
 	(defparameter *words* (list "xaxis" "xextreme" "thickness" "end" shapename))
 	(dotimes (i 4)
 		(if (<= i 1)
+
 			(setf (aref xaxis 9   (* i 19) ) 14)
 			(setf  (aref xaxis (- (* i 19) 38) 9) 14)))
 	(dotimes (i 4)
 		(if (<= i 1)
+
 			(setf (aref xextreme 9   (* i 19) ) 14)
 			(setf  (aref xextreme (- (* i 19) 38) 9) 14)))
 	(setq thick4 2))
+(defun sphere (shapename)
+	(defparameter *words* (list "xaxis" "yaxis" "ysetter" "end" shapename))
+	(dotimes (i 4)
+		(if (<= i 1)
+
+			(setf (aref xaxis 9   (* i 19) ) 15)
+			(setf  (aref xaxis (- (* i 19) 38) 9) 15)))
+	(dotimes (i 4)
+		(if (<= i 1)
+
+			(setf (aref yaxis 9   (* i 19) ) 15)
+			(setf  (aref yaxis (- (* i 19) 38) 9) 15)))
+	(setf (aref ysetter 9 9) 10))
+; reset functions
 (defun matrix-set-all (matrix)
   (dotimes (i (array-total-size matrix) matrix)
     (setf (row-major-aref matrix i) 0)))
-(defun utilized 
+(defun utilized (unused)
 	(matrix-set-all xaxis)
 	(matrix-set-all yaxis)
 	(matrix-set-all zaxis)
@@ -50,3 +74,35 @@
 	(matrix-set-all zextreme)
 	(setq corner 0)
 	(setq thick4 0))
+
+
+
+
+
+
+
+
+
+
+
+
+
+;CHEATKEY
+;axis are well base planes
+;extremes are to what extremes those go to
+;setters set where the center of the plane starts
+;on axis there are numbers
+;numbers always go to number neighbors on the first digit
+;second digit is a modifer
+;modifiers are
+; 1 = raw points
+; 2 = wireframe
+; 3 =wireframe tubes ( requires thickness)
+; 4 = exponiental filled/exponiential with thickness
+; 5 = whole shape
+; 6 = exponiential frame
+; 7-8 unset
+; 9 is to say there will be multiple modifiers, wraps list after first digit
+; 0 is if we need double-triple digit modifiers and wraps around the number
+
+
