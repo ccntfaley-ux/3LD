@@ -2,3 +2,30 @@
 ; use this for rendering objects, mainly placeholder currently, current theory is, objects in objects.3L will be
 ; taken, given location from a future locator.3L and rendered togethor or rendered individually
 (load "/home/user/Downloads/3-lisp.cl")
+(load "/home/user/selfcontained/3LD-main/objects.3L")
+(setq mapx (make-array '(20 20) :initial-element 0))
+(setq mapy (make-array '(20 20) :initial-element 0))
+(setq mapz (make-array '(20 20) :initial-element 0))
+(defvar *viewloc* (list 0 0 0 90))
+(defvar *shapeloc* (list 20 20 20))
+(defvar *resolution* (list 1280 720))
+(setq slope 1)
+(defun viewcheck (location shapename)
+	(equations "rot")
+	(setq viewpk (make-array '1280 720) :initial-element 0)
+	(setq viewx (nth 0 viewloc))
+	(setq viewy (+ (nth 1 viewloc) 10))
+	(setq viewz (nth 2 viewloc)))
+(defun equations (rotationalt)
+	(dotimes (i 4)
+		(if (evenp (+ i 1))
+			(setf numfull (- (abs ( + i 1)) (- (+ i 1))))
+			(setf numfull (+ i 1)))
+		(defparameter *finalpass* (string-upcase (intern (concatenate 'string "stringpass" (write-to-string i)))))
+		(defparameter finalpass (lambda (x) (* (* numfull slope) x)))))
+
+
+
+		
+	
+	
