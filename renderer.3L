@@ -6,16 +6,31 @@
 (setq mapx (make-array '(20 20) :initial-element 0))
 (setq mapy (make-array '(20 20) :initial-element 0))
 (setq mapz (make-array '(20 20) :initial-element 0))
-(defvar *viewloc* (list 0 0 0 90))
-(defvar *shapeloc* (list 20 20 20))
-(defvar *resolution* (list 1280 720))
+(defvar viewloc (list 0 0 0 89 0 0)) ; x y z x rotation y rotation z rotation
+(defvar shapeloc (list 20 20 20)) ; only use if locator empty
+(defvar resolution (list 1280 720))
 (setq slope 1)
-(defun viewcheck (location shapename)
+
+
+(defun viewcheck ()
 	(equations "rot")
-	(setq viewpk (make-array '1280 720) :initial-element 0)
+	(setq viewpk (make-array '(1280 720) :initial-element 0))
 	(setq viewx (nth 0 viewloc))
 	(setq viewy (+ (nth 1 viewloc) 10))
-	(setq viewz (nth 2 viewloc)))
+	(setq viewz (nth 2 viewloc))
+	
+	(setq xaxismod (truncate (/ (- (* 1 (nth 3 viewloc)) 90) 90)))
+	(cubewhole "bai") ; only use in single shape ame replace with pref object
+	(if (not (= (nth 3 viewloc) 90))
+		(progn
+			(dotimes (d (nth 1 (array-dimensions xaxis)))
+				(setf (aref viewpk (nth 0 shapeloc) (+ (nth 1 shapeloc) (nth 2 shapeloc))) (aref xaxis (- (nth 0 (array-dimensions xaxis)) 1) d)))
+			(dotimes (d (nth 1 (array-dimensions xaxis)))
+				(setf (aref viewpk (nth 0 shapeloc) (+ (nth 1 shapeloc) (nth 2 shapeloc) (* (- (nth 0 (array-dimensions xaxis)) 1) xaxismod))) (aref xaxis 0 d))))
+	
+		(+ 2 3)))
+		
+
 (defun equations (rotationalt)
 	(dotimes (i 4)
 		(if (evenp (+ i 1))
@@ -23,6 +38,9 @@
 			(setf numfull (+ i 1)))
 		(defparameter *finalpass* (string-upcase (intern (concatenate 'string "stringpass" (write-to-string i)))))
 		(defparameter finalpass (lambda (x) (* (* numfull slope) x)))))
+
+(viewcheck)
+(print viewpk)
 
 
 
